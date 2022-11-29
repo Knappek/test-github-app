@@ -1,0 +1,23 @@
+apiVersion: run.tanzu.vmware.com/v1alpha2
+kind: TanzuKubernetesCluster
+metadata:
+  name: tkc-1
+  namespace: team-a
+spec:
+  topology:
+    controlPlane:
+      replicas: 3
+      vmClass: best-effort-medium
+      storageClass: tkgs-storage-policy
+      tkr:  
+        reference:
+          name: v1.21.6---vmware.1-tkg.1.b3d708a
+    nodePools:
+    - name: worker-nodepool-a1
+      replicas: 3
+      vmClass: best-effort-medium
+      storageClass: tkgs-storage-policy
+      tkr:  
+        reference:
+          name: v1.21.6---vmware.1-tkg.1.b3d708a
+
